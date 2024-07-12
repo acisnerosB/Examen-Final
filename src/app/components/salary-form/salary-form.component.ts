@@ -1,13 +1,33 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { EmployeeRegistrationRequest } from '../../models/employee-registration-request.model';
 import { SalaryCalculationService } from '../../services/salary-calculation.service';
 import { SalaryCalculationResponse } from '../../models/salary-calculation-response.model';
 import { Router } from '@angular/router';
+import {MatCard} from "@angular/material/card";
+import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {CommonModule, NgIf} from "@angular/common";
+import {MatButton} from "@angular/material/button";
+import {MatExpansionModule} from "@angular/material/expansion";
+
 
 @Component({
-  selector: 'app-salary-form',
+  selector: 'salary-form',
   templateUrl: './salary-form.component.html',
+  standalone: true,
+  imports: [
+    MatCard,
+    MatFormField,
+    ReactiveFormsModule,
+    MatInput,
+    NgIf,
+    MatButton,
+    CommonModule,
+    MatLabel,
+    MatError,
+
+  ],
   styleUrls: ['./salary-form.component.css']
 })
 export class SalaryFormComponent {
