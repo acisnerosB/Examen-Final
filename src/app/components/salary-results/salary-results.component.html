@@ -1,1 +1,9 @@
-<p>salary-results works!</p>
+<mat-card *ngIf="result">
+  <mat-card-title>Resultados del Cálculo de Salario</mat-card-title>
+  <mat-card-content>
+    <p>Salario Regular: {{ result.regularSalary | currency }}</p>
+    <p>Salario por Horas Extras: {{ result.overtimeSalary | currency }}</p>
+    <p>Deducciones: {{ result.deductions | currency }}</p>
+    <p>Salario Neto: {{ result.netSalary | currency }}</p>
+  </mat-card-content>
+</mat-card>

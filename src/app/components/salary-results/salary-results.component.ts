@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { SalaryCalculationResult } from '../../models/salary-calculation-result.model';
 
 @Component({
   selector: 'app-salary-results',
-  standalone: true,
-  imports: [],
   templateUrl: './salary-results.component.html',
-  styleUrl: './salary-results.component.css'
+  styleUrls: ['./salary-results.component.css']
 })
 export class SalaryResultsComponent {
-
+  @Input() result!: SalaryCalculationResult;
 }
