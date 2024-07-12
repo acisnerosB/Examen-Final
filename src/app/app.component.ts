@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SalaryCalculationResult } from './models/salary-calculation-result.model';
+import { SalaryCalculationResponse } from './models/salary-calculation-response.model';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,9 @@ import { SalaryCalculationResult } from './models/salary-calculation-result.mode
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  salaryResult!: SalaryCalculationResult;
+  salaryResult!: SalaryCalculationResponse;
 
-  onSalaryCalculated(result: SalaryCalculationResult) {
+  onSalaryCalculated(result: SalaryCalculationResponse) {
     this.salaryResult = result;
   }
 }

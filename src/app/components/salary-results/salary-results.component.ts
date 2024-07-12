@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SalaryCalculationResult } from '../../models/salary-calculation-result.model';
+import { SalaryCalculationResponse } from '../../models/salary-calculation-response.model';
 
 @Component({
   selector: 'app-salary-results',
@@ -7,5 +7,5 @@ import { SalaryCalculationResult } from '../../models/salary-calculation-result.
   styleUrls: ['./salary-results.component.css']
 })
 export class SalaryResultsComponent {
-  @Input() result!: SalaryCalculationResult;
+  @Input() result!: SalaryCalculationResponse;
 }

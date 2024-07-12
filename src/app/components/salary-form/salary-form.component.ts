@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SalaryCalculationRequest } from '../../models/salary-calculation-request.model';
+import { EmployeeRegistrationRequest } from '../../models/employee-registration-request.model';
 import { SalaryCalculationService } from '../../services/salary-calculation.service';
-import { SalaryCalculationResult } from '../../models/salary-calculation-result.model';
+import { SalaryCalculationResponse } from '../../models/salary-calculation-response.model';
 
 @Component({
   selector: 'app-salary-form',
@@ -10,13 +10,13 @@ import { SalaryCalculationResult } from '../../models/salary-calculation-result.
   styleUrls: ['./salary-form.component.css']
 })
 export class SalaryFormComponent {
-  @Output() salaryCalculated = new EventEmitter<SalaryCalculationResult>();
+  @Output() salaryCalculated = new EventEmitter<SalaryCalculationResponse>();
   salaryForm: FormGroup;
 
   constructor(private fb: FormBuilder, private salaryService: SalaryCalculationService) {
     this.salaryForm = this.fb.group({
       name: ['', Validators.required],
-      hourlyRate: [0, [Validators.required, Validators.min(1)]],
+      hourlyWage: [0, [Validators.required, Validators.min(1)]],
       hoursWorked: [0, [Validators.required, Validators.min(1)]],
       overtimeHours: [0, [Validators.required, Validators.min(0)]]
     });
@@ -24,7 +24,7 @@ export class SalaryFormComponent {
 
   onSubmit() {
     if (this.salaryForm.valid) {
-      const formValues: SalaryCalculationRequest = this.salaryForm.value;
+      const formValues: EmployeeRegistrationRequest = this.salaryForm.value;
       const result = this.salaryService.calculateSalary(formValues);
       this.salaryCalculated.emit(result);
     }
