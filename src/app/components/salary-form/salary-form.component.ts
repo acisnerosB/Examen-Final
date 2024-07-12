@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeRegistrationRequest } from '../../models/employee-registration-request.model';
 import { SalaryCalculationService } from '../../services/salary-calculation.service';
 import { SalaryCalculationResponse } from '../../models/salary-calculation-response.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-salary-form',
@@ -13,7 +14,7 @@ export class SalaryFormComponent {
   @Output() salaryCalculated = new EventEmitter<SalaryCalculationResponse>();
   salaryForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private salaryService: SalaryCalculationService) {
+  constructor(private fb: FormBuilder, private salaryService: SalaryCalculationService, private router: Router) {
     this.salaryForm = this.fb.group({
       name: ['', Validators.required],
       hourlyWage: [0, [Validators.required, Validators.min(1)]],
@@ -27,6 +28,9 @@ export class SalaryFormComponent {
       const formValues: EmployeeRegistrationRequest = this.salaryForm.value;
       const result = this.salaryService.calculateSalary(formValues);
       this.salaryCalculated.emit(result);
+
+      // Navegar a la página de resultados pasando el estado
+      this.router.navigate(['/results'], { state: result });
     }
   }
 }
